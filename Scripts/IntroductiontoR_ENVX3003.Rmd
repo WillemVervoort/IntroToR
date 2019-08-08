@@ -62,7 +62,7 @@ The good thing about R is, there are *base functions*, that is commands that are
 
 Generally we install a package from CRAN server using this basic code. Here `packageName` is the name of the package that you would like to install.
 
-```{asis}
+```{r , eval=F}
 install.packages("packageName") # case sensitive and you need quotes
 library(packageName) # to load the package, case sensitive
 ```
@@ -98,14 +98,14 @@ However, if you are using an Rmarkdown file, you are generally discouraged to us
 
 in R:
 
-```{asis}
+```{r, eval=F}
 getwd() # this tells you your  current working directory
 dir() # this gives you a list of the files in your currentt working directory
 ?setwd # this give you the help file on how to set your working directory in code
 ```
 
 in Rmarkdown use `opts_knit$set(root.dir ="path/to/files")`
-```{r eval=F}
+```{r, eval=F}
 knitr::opts_knit$set(root.dir = "c:/users/rver4657/Desktop") ## windows users
 knitr::opts_knit$set(root.dir = "~/Desktop") ## Mac users
 dir() # this gives you a list of the files in your current working directory
@@ -178,13 +178,13 @@ In this introduction we want to use some of the features in the package [tidyver
 
 There are two components to using packages. The first is to make sure that the package is installed, for which we can use the functions `install.packages()`. Note that the name of the package is a *string* so needs to between quotes `""`.  
 
-```{asis}
+```{r , eval=F}
 install.packages("tidyverse")
 ```
 
 If the package is installed in your personal library, you will need to load the package in R using `require()` or `library()`. There are subtle differences between these two functions, but they are currently not that important. Check the help files.
 
-```{asis}
+```{r , eval=F}
 require(tidyverse)
 ```
 
@@ -318,7 +318,7 @@ Here is a short demonstration for `mutate` and `arrange` using the Rainfall data
 # I can add a column of countries
 Rainfall_new <- Rainfall %>%
   mutate(country = c("UY", "US", "NL", "AU", "RU","CN")) %>%
-  # and maybe a rainfall of the average monthly rainfall
+  # and maybe a column of the average monthly rainfall
   mutate(M_rain = Rain_mm/12)
 
 # You can use select to reorder the columns and put country to the front
@@ -331,7 +331,7 @@ Rainfall_new %>%
 
 ```
 
-`arrange` to sort rows, att `desc()` do do this in decreasing order
+`arrange` to sort rows, and add `desc()` to do this in decreasing order
 
 ```{r}
 Rainfall_new %>%

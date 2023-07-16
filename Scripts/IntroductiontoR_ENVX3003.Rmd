@@ -8,9 +8,10 @@ output:
     toc: true
     toc_depth: 2
 ---
-```{r setup, echo=T, warning=F, message=F}
+```{r setup, echo=F, warning=F, message=F}
 # root dir
-knitr::opts_knit$set(root.dir = "E:/cloudstor/IntroToR")
+#knitr::opts_knit$set(root.dir = "D:/cloudstor/IntroToR")
+#knitr::opts_knit$set(root.dir = "c:/user/rver4657/dropbox (Sydney Uni)/teaching/envx3003/scripts")
 knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
 require(lubridate)
@@ -18,12 +19,12 @@ require(lubridate)
 
 # Introduction  
 
-This is an introduction to R, written for ENVX3003
-This work is based on earlier documents from the author and co workers (in particular, Dasapta Erwin Irawan from ITBandung, Thomas Bishop and Floris van Ogtrop) and it also builds on many of the introduction to R literature on CRAN and elsewhere on the internet.    
+This is an introduction to R, written for ENVX3003.
+This work is based on earlier documents from the author and co workers (in particular, Dasapta Erwin Irawan from ITBandung, Thomas Bishop and Floris van Ogtrop) and it also builds on many of the introduction to R literature on [CRAN](https://cran.r-project.org/) and elsewhere on the internet.    
 
 This course is not a complete introduction, and more in depth knowledge on R and the use of R can be gained from many courses on-line and by basic practice.  
 
-This course covers three reading in files and plotting. 
+This course covers three main elements: reading in files, manipulating data and doing some plotting. 
 It particularly uses the package `tidyverse` and Rstudio. 
 More detail on how to use `tidyverse` is on this [website](http://r4ds.had.co.nz/). 
 
@@ -36,19 +37,19 @@ We hope that this introduction offers sufficient depth to at least get you start
 
 The origins of R are in statistics, so this is what R does best. However, over time, it has proven to be a flexible language that can also be used quite effectively for programming and data science.
 
-The key power of R is in using "scripts" and "notebooks" or "rmarkdown" files which are ways to record and document the code you are generating. In this course we will focus on using rmarkdown.
+The key power of R is in using "scripts" and "notebooks" or "rmarkdown" files which are ways to record and document the code you are generating. In this course we will focus on using rmarkdown and notebooks.
 
 ## R and R Studio
 
 ### Base R vs IDE
 
-If R is the machine under the hood, then R Studio would be the dashboard, steering wheel, as well as the gas and brake paddles. People frequently refer to R as `base R` and R Studio is an Integrated Development Environment (IDE). 
+If R is the machine under the hood, then R Studio (and in this case Ed Saturn notebooks) would be the dashboard, steering wheel, as well as the gas and brake paddles. People frequently refer to R as `base R` and things like R Studio is an Integrated Development Environment (IDE). 
 
 Are there other IDEs than R Studio? The answer is Yes. You could check out [R Commander](http://www.rcommander.com/). Another interesting project is or [Microsoft R Open](https://mran.microsoft.com/open), which offers a multithreaded version of R. 
 
 ### Running R online 
 
-Can we run R online? The answer is also Yes. R Studio offers a paid cloud service. You could try [R fiddle](http://www.r-fiddle.org/) for a limited range of code of package installation, [CoCalc/Sage Math Cloud](https://cocalc.com/), [Jupyter](https://jupyter.org/), and [Code Ocean](https://codeocean.com/).   
+Can we run R online? The answer is also Yes. R Studio offers a paid cloud service. You could try [R fiddle](http://www.r-fiddle.org/) for a limited range of code of package installation, [CoCalc/Sage Math Cloud](https://cocalc.com/), [Jupyter](https://jupyter.org/, and Saturn notebooks are a version of this), and [Code Ocean](https://codeocean.com/).   
 
 ### R is cross platform
 
@@ -69,9 +70,9 @@ library(packageName) # to load the package, case sensitive
 
 ### Navigation
 
-If you use R Studio, you can see four panels (clock-wise): A *script* panel on top right, Environment, Files/folder/plots/packages, and console. You write your lines of code in the script panel then, click the *run* button (or select code and press CTRL+ENTER, or CMD+ENTER) to run and observe the progress of your code in the console panel. Find out in the console, if your code is running well or has a problem (error messages), or just a warning. Then you could see all the *objects* and loaded data components that relate to your code in the Environment panel.
+If you use R Studio, you can see four panels (clock-wise): A *script* panel on top right, Environment, Files/folder/plots/packages, and console. You write your lines of code in the script panel and then, click the *run* button (or select code and press CTRL+ENTER, or CMD+ENTER) to run and observe the progress of your code in the console panel. Find out in the console, if your code is running well or has a problem (error messages), or just a warning. Then you could see all the *objects* and loaded data components that relate to your code in the Environment panel.
 
-![Four panels in R Studio](../images/four_panels.png)
+![Four panels in R Studio](images/four_panels.png)
 
 # Working folder structure
 In R and in any other command line-based application, you would need to tell the program what your current folder location is and what the location of any data is. This is one of the most important steps in the process and many of the errors generated relate to not correctly define the directory.
@@ -92,6 +93,31 @@ The basic function to use is `setwd("path/to/file")`. The thing to note is that 
 
 However, if you are using an Rmarkdown file, you are generally discouraged to use "setwd", but here we can use another command which is part of the `knitr` package
 
+## Saturn notebooks in Edstem
+
+**Saturn notebooks** are a special version of Jupyter notebooks that allow collaboration between students and staff. The notebooks can be created in the workspaces of your Ed environment
+
+![Create new workspace in Ed](Images/EdDiscussionCreateWorkspace.png)
+![Create a new Saturn notebook](Images/EdDiscussionCreateNotebook2.png)
+
+A Saturn notebook allows you to put in blocks of text or code. The workspace is directly linked to the notebook and files can be uploaded by right clicking in the files space on the left.
+
+## Rmarkdown notebooks in Rstudio
+
+[Rmarkdown](https://rmarkdown.rstudio.com/) notebooks in Rstudio are very similar to notebooks in Ed (in fact you can also open up a notebook in Rstudio). The nice thing about Rmarkdown is that you can also "publish" the notebook as an html file (webpage) or even as a word file or pdf file. In fact, this practical handout was written in R markdown. We will stick with html for the practical.
+
+A new notebook can be opened from the file menu in R studio:
+
+![Create a new Rmarkdown notebook](Images/RCreateNewNotebook.png)
+
+and you have to give a title and your name (but you can change this later) which are inserted into the 'yaml header':
+
+![Name for new Rmarkdown notebook](Images/RCreateNewNotebook2.png)
+
+
+The Rmarkdown notebook comes with some example code below the 'yaml header' which you can delete if you want. Similar to the Ed Saturn notebooks you can write text and use code blocks. Use "CTRL-I" to insert a new code block in the notebook. 
+
+
 #### Exercise
 
 - Can you check your working folder/directory and what's inside it? 
@@ -100,11 +126,12 @@ in R:
 
 ```{r, eval=F}
 getwd() # this tells you your  current working directory
-dir() # this gives you a list of the files in your currentt working directory
+dir() # this gives you a list of the files in your current working directory
 ?setwd # this give you the help file on how to set your working directory in code
 ```
 
-in Rmarkdown use `opts_knit$set(root.dir ="path/to/files")`
+in Rmarkdown you can use `opts_knit$set(root.dir ="path/to/files")` to set your working directory.
+
 ```{r, eval=F}
 knitr::opts_knit$set(root.dir = "c:/users/rver4657/Desktop") ## windows users
 knitr::opts_knit$set(root.dir = "~/Desktop") ## Mac users
@@ -129,7 +156,7 @@ The basic structure of R is based on objects, which are named. **R is case sensi
 
 All objects in R exist in the local R memory. So if you have a datafile, the first thing to do is to load it on your memory as an object that can be seen in the Environment panel. Thus, whatever you do with the object will not change your file, unless you save the object as a file. 
 
-R uses "<-" to assign a value (or another object) to an object. You may find "=" means the same, but we don't recommend it, because you also use "=" with different meaning in the command and parameter setting.
+As convention, R uses "<-" to assign a value (or another object) to an object. You may find "=" works just the same, but we don't recommend it, because you also use "=" with different meaning in the command and parameter setting.
 
 ```{r objects}
 # assign
@@ -168,15 +195,18 @@ foo
 
 # STATISTICAL ANALYSIS AND DATA MANIPULATION
 
-Now it's time to look a bit further into more technical bits. How to manipulate data so we can perform some analyses on it to answer our research problem. There are, offcourse, base R commands to do the job, but find it easier for us to use `tidyverse` package. This package is actually a combo of several packages written by the same author.
+Now it's time to look a bit further. In particular, we might be interested in how we might manipulate data so we can perform some analyses to answer our research or practical problem. There are, of course, base R commands to do the job, but because of the growth in use and the popularity, you might find it easier  to use the [`tidyverse` package](https://www.tidyverse.org/). This package is actually a combo of several packages originally written by the same author, but now expanded by mutiple authors.
+There is also a nice link to [this on-line book R for Data science](https://r4ds.had.co.nz/), which is good for background information and to expand your knowledge.
 
 ## Packages to use
 
 As highlighted, much of the power in R comes from the fact that it is open source and this means many people write new code and share this code. The formal way to do this is via "packages", which, once checked and endorsed by the R community, appear in the CRAN repository as a **package**.
 
-In this introduction we want to use some of the features in the package [tidyverse](http://tidyverse.org/). This package includes a series of other useful packages that you might need. The package is also the basis of the book [R for data science](https://r4ds.had.co.nz/)
+In this introduction we want to use some of the features in the package [tidyverse](http://tidyverse.org/). This package includes a series of other useful packages that you might need. 
 
 There are two components to using packages. The first is to make sure that the package is installed, for which we can use the functions `install.packages()`. Note that the name of the package is a *string* so needs to between quotes `""`.  
+
+Within the Edstem environment, we have made sure that those packages are installed, so you don't need to separately install those packages.
 
 ```{r , eval=F}
 install.packages("tidyverse")
@@ -188,17 +218,17 @@ If the package is installed in your personal library, you will need to load the 
 require(tidyverse)
 ```
 
-### Exercise  
+### Optional Exercise  
 
 - Can you load (and maybe first install) the package `lubridate`? This package is great for manipulating dates and times and works well with `tidyverse`.
 
 
 ## A dataframe in tidyverse  
 
-A dataframe is a bit more complex. It is essentially a list, but presented as a table. Here is a simple demonstration of its power. We are using `data_frame()` from tidyverse.
+A dataframe is a bit more complex. It is essentially a list, but presented as a table. Here is a simple demonstration of its power. We are using `tibble()` from tidyverse, which is a funny name, but is very similar to `data.frame()` in base R.
 
 ```{r dataframe}
-Rainfall <- data_frame(City = c("Montevideo","New York",
+Rainfall <- tibble(City = c("Montevideo","New York",
                                 "Amsterdam","Sydney",
                                 "Moscow", "Hong Kong"),
                        Rain_mm = c(950, 1174, 838, 1215,
@@ -206,13 +236,13 @@ Rainfall <- data_frame(City = c("Montevideo","New York",
 Rainfall
 ```
 
-As you can see a dataframe (in this case a `tibble`) can mix character columns (City) and numeric columns (Rain_mm). Here I used `c()` to generate vectors which I put in the columns. In addition, the colummns have names, which you can access using `colnames()` or names:
+As you can see a data frame (in this case a `tibble`) can mix character columns (City) and numeric columns (Rain_mm). Here I used `c()` to generate vectors of numbers of characters which I put in the columns. In addition, the colummns have names, which you can access using `colnames()` or names:
 ```{r colnames}
 colnames(Rainfall)
 names(Rainfall)
 ```
 
-Once you have a dataframe, you can access parts of the dataframe or manipulate the dataframe. Such as fiding a column
+Once you have a data frame or tibble, you can access parts of the dataframe or manipulate the dataframe. Such as finding a column
 
 ```{r workdf}
 # call a column
@@ -223,7 +253,7 @@ Rainfall["City"]
 Rainfall[,1]
 ```
 
-Subsetting rows is slightly different, you can still use numbers
+Sub-setting rows is slightly different, you can still use numbers
 
 ```{r}
 # see the first two rows
@@ -244,7 +274,7 @@ OK, what is that `%>%` thing?? It is a further little symbol (apart from assign 
 
 So to read the above code in words, it says:
 
-- Take the Rainfall data, then, find the row where City equals "Montevideo"
+- Take the Rainfall data, **then**, find the row where City equals "Montevideo"
 
 Let's expand this idea and show another `filter`:
 ```{r}
@@ -272,8 +302,8 @@ Rainfall %>%
 Using the above examples, can you do the following?  
 
 - Extract the column with the rainfall values?  
-- Extract the row with the annual rainfall at Amsterdam?  
-- Which cities have rainfall below 1500 mm?  
+- Extract the row with the annual rainfall at Amsterdam and assign to an object?  
+- Create an object with cities that have rainfall below 1500 mm?  
 
 
 ## Reading data from different sources
@@ -291,17 +321,17 @@ UR_flow <- read_csv("Data/UruguayRiver_ConcordiaSt.csv")
 UR_flow
 ```
 
-Previously you would have to save a specific program's data file, say in *xls* in to a pure text file such as *csv* or *txt*. However, there are now many packages that allow you to read a dataset directly from its binary format. There are many packages to do such task, [readxl package](https://cran.r-project.org/web/packages/readxl/readxl.pdf) is one of them. You could google your way of the most convenient package to use.
+Previously you would have to save a specific program's data file, say in *xls* in to a pure text file such as *csv* or *txt*. However, there are now many packages that allow you to read a dataset directly from its binary format. There are many packages to do such task, [readxl package](https://cran.r-project.org/web/packages/readxl/readxl.pdf) is one of them. You could google your way to the most convenient package to use.
 
 ### Exercise  
 
 - Can you read in the file: "Parana_CorrientesSt.csv" (supplied) from your data directory?
 
-## More data manipulation (using `tidyverse`)
+## More on data manipulation (using `tidyverse`)
 
 ### Important commands
 
-The following list is the important commands to remember:
+Based on the above, and building on this, the following list are the most used commands in tidyverse:
 
 - `select()` 	select columns
 - `filter()` 	filter rows
@@ -310,9 +340,11 @@ The following list is the important commands to remember:
 - `summarise()` 	summarise values
 - `group_by()` 	allows for group operations in the "split-apply-combine" concept
 
-Here is a short demonstration for `mutate` and `arrange` using the Rainfall data:
+#### mutate, arrange and select
 
-`mutate` and `select` to add columns and rearrange columns
+Here is a short demonstration for `mutate`, `select` and `arrange` using the Rainfall data:
+
+`mutate` and `select` to add columns, select columns and rearrange columns
 
 ```{r}
 # I can add a column of countries
@@ -338,6 +370,8 @@ Rainfall_new %>%
   arrange(desc(Rain_mm))
 ```
 
+#### summarise and group_by
+
 Another useful function is `summarise()`, which allows you to apply a function over a data frame and particular across different factors. In tidyverse this is often combined with the function `group_by` to define how you would like to summarise. 
 
 Here is an example of summing the Uruguay river flow by year. Note that putting brackets around the statement makes it print out the result.
@@ -346,7 +380,7 @@ Here is an example of summing the Uruguay river flow by year. Note that putting 
 # aggregate to annual flow
 (annual_flow <- UR_flow %>% #then
   group_by(Year=Year) %>% #then
-  summarize(Sumflow = sum(Flow)))
+  summarise(Sumflow = sum(Flow)))
 
 ```
 
@@ -355,19 +389,19 @@ If you just wanted the overall mean and standard deviation of monthly flow, you 
 ```{r}
 # Mean and sd\ monthly flow
 UR_flow %>% #then
-  summarize(Meanflow = mean(Flow),
+  summarise(Meanflow = mean(Flow),
             SdFlow = sd(Flow))
 ```
 
 
 ### Exercise  
 
-- Can you calculate the standard deviation of the monthly flow by year using `summarize()`?
+- Can you calculate the standard deviation of the monthly flow by year using `summarise()`?
 
 
-## Different data set
+## Different data set for practice
 
-Let's open this dataset. It's a water quality data in `csv` format. 
+Let's open a water quality data set in `csv` format. 
 
 Here we will introduce some groundwater chemical data from Semarang in Indonesia, kindly supplied by [Dasapta Erwin Irawan from ITB](https://orcid.org/0000-0002-1526-0863)
 
@@ -376,7 +410,9 @@ chemdata <- read_csv("data/semarang_chem.csv")
 chemdata
 ```
 
-A bit more on select. If you want multiple columns `Lat`, `Long` until `Depth`, you can simply use the `select()` function.
+### `select()`
+
+A bit more on select. If you want multiple columns, for example `Lat`, `Long` until `Depth`, you can simply use the `select()` function.
 
 ```{r tv_select2}
 chemdata %>%
@@ -386,13 +422,14 @@ chemdata %>%
 Or you want multiple columns Lat, Long until Depth, but you don't want UTM_zone. Again, you can use the `select()` function.
 
 ```{r unselect}
-(chemdata %>%
-  select(Lat, Long:Depth, -UTM_zone))
+chemdata %>%
+  select(Lat, Long:Depth, -UTM_zone)
 ```
+
 
 ### `arrange()`
 
-Sorting out data by Aq and Fac. Use `arrange()` function.
+Sorting the data by the Aq (aquifer) and Fac (facies) columns. Use the `arrange()` function.
 
 ```{r arrange}
 chemdata %>%
@@ -401,7 +438,7 @@ chemdata %>%
 
 ### `mutate()`
 
-Making new columns, for instance, calculating the ratio between Ca and Na. Use `mutate() function`
+Making new columns, for instance, calculating the ratio between Ca and Na. Use the `mutate() function`
 
 ```{r mutate}
 chemdata %>% 
@@ -440,7 +477,7 @@ chemdata%>%
 As we have indicated earlier, be sure to check out [R for Data Science](http://r4ds.had.co.nz/) for more info about `tidyverse` and its use in data science.
 
 
-#PLOTTING
+# PLOTTING
 
 R is good at plotting. There are many ways to create a plot. So you just have to choose which one is the easiest for you. One way is using base R plotting engine. Like these plots.
 
@@ -449,13 +486,10 @@ hist(chemdata$SO4, main = "histogram of SO4")
 plot(chemdata$TDS, chemdata$Cl, main="scatter plot of TDS and Cl")
 ```
 
-You could always tweak the plot to suits your needs. There are many resources about plotting in R, like: 
+You could always tweak the plot to suits your needs. There are many resources about plotting in R on the web.
 
-- [Producing Simple Graphs with R](https://www.harding.edu/fmccown/r/), 
-- [Quick R](https://www.statmethods.net/graphs/).
-- and more.
+Nicer plots are made with `ggplot2` which is the plotting engine from `tidyverse`. The best book for this is the [**R Graphics Cookbook**](http://www.cookbook-r.com/Graphs/)
 
-Nicer plots are made with `ggplot2` which is the plotting engine from `tidyverse`.
 
 ```{r plotting3}
 chemdata  %>%
@@ -578,13 +612,13 @@ print(paste(UR_flow[i,j], colnames(UR_flow)[j]))
 
 - Write another program that includes a loop and a logical test  
 
-###Comparison and Logical Operators
+### Comparison and Logical Operators
 
 *Comparison operators return a true or false value:*  
 
 * ==	Equal to
-* >	Greater than
-* >=	Greater than or equal to 
+* \>	Greater than
+* \>=	Greater than or equal to 
 * <	Less than
 * <=	Less than or equal to  
 
